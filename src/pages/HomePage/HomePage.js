@@ -15,24 +15,26 @@ class HomePage extends Component {
 
 
   componentDidMount() {
-    if (!this.state.user) this.props.history.push('/signup')
+    if (!this.state.user) { this.props.history.push('/signup') }
+    else {
 
-    var coins = this.state.user.coins || '0'
-    BitcoinService.getRate(coins)
-      .then(rate => {
-        this.setState({currRate: rate})
-      })
+      var coins = this.state.user.coins || '0'
+      BitcoinService.getRate(coins)
+        .then(rate => {
+          this.setState({ currRate: rate })
+        })
+    }
   }
 
   render() {
     const { user, currRate } = this.state
     return (
       <div className="home-page-list">
-     {this.state.user && <h2>Welcome To Mister-Bitcoin {user.name}</h2>}
-      <ul>
-            <li>   {this.state.user && <span className="homepage-title">coins:{user.coins}
-                              <i className="flaticon-different-currencie"></i></span>}</li>
-             <li>  {this.state.user && <span className="homepage-title">Your Bitcoin Rate Is:{currRate}  Ƀ</span> }</li>
+        {this.state.user && <h2>Welcome To Mister-Bitcoin {user.name}</h2>}
+        <ul>
+          <li>   {this.state.user && <span className="homepage-title">coins:{user.coins}
+            <i className="flaticon-different-currencie"></i></span>}</li>
+          <li>  {this.state.user && <span className="homepage-title">Your Bitcoin Rate Is:{currRate}  Ƀ</span>}</li>
         </ul>
         <Link to={'/signup'}>
           <button>{this.state.user ? 'Sign Out' : 'Sign Up'}</button>
