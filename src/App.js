@@ -4,6 +4,8 @@ import HomePage from './pages/HomePage/HomePage'
 import ContactPage from './pages/ContactPage/ContactPage'
 import ContactDetails from './pages/ContactDetails/ContactDetails'
 import ContactEdit from './pages/ContactEdit/ContactEdit'
+import SignUpPage from './pages/SignUpPage/SignUpPage'
+
 
 import './App.css'
 // import './assets/icon-font/flaticon.css'
@@ -24,9 +26,9 @@ class App extends Component {
               <Switch>
                 <Route path="/contacts/edit/:id?" 
                   component={ContactEdit} />
-
                 <Route path="/contacts/:id" component={ContactDetails} />
                 <Route path="/contacts" component={ContactPage} />
+                <Route path="/signup" component={SignUpPage} />  
                 <Route path="/" component={HomePage} />  
               </Switch>
             </div>

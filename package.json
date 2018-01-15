@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://nemo369.github.io/misterBitcoin",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "node-sass-chokidar": "0.0.3",
