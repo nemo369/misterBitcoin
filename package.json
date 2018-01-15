@@ -2,7 +2,9 @@
   "name": "misterbit-coin",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nemo369.github.io/misterBitcoin",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.2",
     "react": "^16.2.0",

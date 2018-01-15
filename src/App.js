@@ -6,7 +6,7 @@ import ContactDetails from './pages/ContactDetails/ContactDetails'
 import ContactEdit from './pages/ContactEdit/ContactEdit'
 
 import './App.css'
-import './assets/icon-font/flaticon.css'
+// import './assets/icon-font/flaticon.css'
 
 class App extends Component {
   
