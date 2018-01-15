@@ -14,14 +14,16 @@ class HomePage extends Component {
   }
 
 
-  componentDidMount() {
-    if (!this.state.user) this.props.history.push('/signup')
+  componentWillMount() {
+    if (!this.state.user){this.props.history.push('/signup')}
+    else {
 
     var coins = this.state.user.coins || '0'
     BitcoinService.getRate(coins)
       .then(rate => {
         this.setState({currRate: rate})
       })
+    }
   }
 
   render() {
