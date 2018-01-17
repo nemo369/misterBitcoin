@@ -5,9 +5,12 @@ import imAvatar from '../../assets/img_avatar.png'
 import Transfer from '../../components/Transfer/Transfer'
 import UserService from '../../services/UserService'
 import MoveService from '../../services/MoveService'
+import {inject , observer} from 'mobx-react'
 
 import ContactService from '../../services/ContactService'
 
+@inject('UserStore')
+@observer
 class ContactDetails  extends Component {
   constructor(props) {
     super(props)
@@ -30,7 +33,7 @@ class ContactDetails  extends Component {
   addMove = (amount) =>{
     // var to =  this.state.contact._id
     var to =  this.state.contact.name
-    MoveService.addMove(amount, to)
+    this.props.UserStore.addMove(amount, to)
     this.props.history.push(`/`)
   }
 
