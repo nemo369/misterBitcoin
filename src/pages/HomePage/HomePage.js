@@ -15,14 +15,10 @@ class HomePage extends Component {
 
 
   componentWillMount() {
-<<<<<<< HEAD
     if (!this.state.user){this.props.history.push('/signup')}
     else {
 
     var coins = this.state.user.coins || '0'
-=======
-    var coins = this.props.UserStore.currUser.coins || '0'
->>>>>>> master
     BitcoinService.getRate(coins)
       .then(rate => {
         this.setState({ currRate: rate })
