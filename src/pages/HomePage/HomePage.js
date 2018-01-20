@@ -15,16 +15,11 @@ class HomePage extends Component {
 
 
   componentWillMount() {
-    if (this.props.UserStore.currUser == null) { 
-      this.props.history.push('/signup') 
-    }
-    else {
-      var coins = this.props.UserStore.currUser.coins || '0'
-      BitcoinService.getRate(coins)
-        .then(rate => {
-          this.setState({ currRate: rate })
-        })
-    }
+    var coins = this.props.UserStore.currUser.coins || '0'
+    BitcoinService.getRate(coins)
+      .then(rate => {
+        this.setState({ currRate: rate })
+      })
   }
 
   render() {

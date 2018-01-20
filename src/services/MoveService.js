@@ -11,16 +11,7 @@ function addMove(amount,to) {
     user.coins = user.coins - amount
     UserService.saveUser(user)
 }
-function getMoves() {
-    var user = UserService.getUser()
-    return user.moves
-}
-function setMoves(moves) {
-    
-}
 
 export default {
-    addMove,
-    getMoves,
-    setMoves
+    addMove
 }

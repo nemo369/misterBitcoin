@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import {inject , observer} from 'mobx-react'
-import UserService, { getEmptyUser, getUser, saveUser, } from '../../services/UserService'
+import UserService, { getEmptyUser, saveUser, } from '../../services/UserService'
 import './SignUpPage.css'
 
 @inject('UserStore')
-// @observer
+@observer
 class SignUpPage extends Component {
-
-    componentDidMount(){
-        this.props.UserStore.setUser(null)
-    }
 
     state = {
         newUser: UserService.getEmptyUser()

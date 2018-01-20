@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MoveService from '../../services/MoveService';
 import './UserMovesPage.css'
+import { inject, observer } from 'mobx-react'
 
+@inject('UserStore')
+@observer
 class UserMovesPage extends Component {
 
-    state = {
-        moves: MoveService.getMoves()
-    }
-
     render(){
-        const {moves} = this.state
+        const moves = this.props.UserStore.currUser.moves
         return (
             <section>
                 <h3>Your Moves</h3>
