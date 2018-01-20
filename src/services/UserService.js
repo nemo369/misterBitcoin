@@ -2,7 +2,7 @@ import StorageService from './StorageService'
 import uniqid from 'uniqid'
 const STORAGE_KEY = 'user';
 
-function getUser (){
+function loadUser (){
     var user = StorageService.load(STORAGE_KEY)
     return user
 }
@@ -21,7 +21,7 @@ function getEmptyUser() {
 }
 
 export default {
-    getUser,
+    loadUser,
     saveUser,
     getEmptyUser,
 }

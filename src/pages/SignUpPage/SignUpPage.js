@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import UserService, { getEmptyUser, getUser, saveUser, } from '../../services/UserService'
+import {inject , observer} from 'mobx-react'
+import UserService, { getEmptyUser, saveUser, } from '../../services/UserService'
 import './SignUpPage.css'
 
+@inject('UserStore')
+@observer
 class SignUpPage extends Component {
-
-    componentDidMount(){
-        UserService.saveUser(null)
-    }
 
     state = {
         newUser: UserService.getEmptyUser()
     }
     signUpUser = (ev) => {
         ev.preventDefault()
-        UserService.saveUser(this.state.newUser)
+        this.props.UserStore.setUser(this.state.newUser)
         this.props.history.push('/')
     }
 
@@ -24,9 +23,10 @@ class SignUpPage extends Component {
         this.setState({newUser: user})
     }
     render() {
+        const  {UserStore} = this.props
         return (
             <section  className="contact-edit">
-                <h1>Sign Up</h1>
+                <h1>Sign Up </h1>
                 <div className="contact-edit-body">
                 <form onSubmit={this.signUpUser}  className="contact-edit-form">
                 <label>Your Name:</label>

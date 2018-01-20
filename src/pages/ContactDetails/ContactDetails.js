@@ -5,9 +5,13 @@ import imAvatar from '../../assets/img_avatar.png'
 import Transfer from '../../components/Transfer/Transfer'
 import UserService from '../../services/UserService'
 import MoveService from '../../services/MoveService'
+import {inject , observer} from 'mobx-react'
 
 import ContactService from '../../services/ContactService'
+import swal from 'sweetalert2'
 
+@inject('UserStore')
+@observer
 class ContactDetails  extends Component {
   constructor(props) {
     super(props)
@@ -17,7 +21,6 @@ class ContactDetails  extends Component {
   componentWillMount() {
     const id = this.props.match.params.id; 
     this.fetchContact(id);
-    this.state.user = UserService.getUser()
   }
 
   fetchContact(id) {
@@ -28,10 +31,27 @@ class ContactDetails  extends Component {
   }
 
   addMove = (amount) =>{
-    // var to =  this.state.contact._id
     var to =  this.state.contact.name
-    MoveService.addMove(amount, to)
-    this.props.history.push(`/`)
+    swal({
+      title: 'Transfet Money?',
+      text: `You will transfer ${amount}$ to ${to}!`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, give him my money',
+      cancelButtonText: 'No, I am to Poor'
+    }).then((result) => {
+      if (result.value) {
+        this.props.UserStore.addMove(amount, to)
+        swal(
+          'You Transfer ' +amount + '$ To ' + to
+        )
+      // result.dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+      } else if (result.dismiss === 'cancel') {
+        swal(
+          'Cancelled'
+        )
+      }
+    })
   }
 
 
@@ -50,7 +70,7 @@ class ContactDetails  extends Component {
         </div>
         <hr />
         <div>
-          <Transfer max={this.state.user.coins} onTransfer={this.addMove}/>
+          <Transfer max={this.props.UserStore.currUser.coins} onTransfer={this.addMove}/>
         </div>
       </section>
     )
