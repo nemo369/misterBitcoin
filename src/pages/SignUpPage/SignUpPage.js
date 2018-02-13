@@ -13,7 +13,8 @@ class SignUpPage extends Component {
     signUpUser = (ev) => {
         ev.preventDefault()
         this.props.UserStore.setUser(this.state.newUser)
-        this.props.history.push('/')
+        .then(_ => this.props.history.push('/'))
+       
     }
 
     onInputChange = (ev) => {

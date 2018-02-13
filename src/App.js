@@ -32,8 +32,8 @@ class App extends Component {
           <div>
          { UserStore.currUser !== {} ?
           <header className="welcome-header">
-              <span>Welcome: {UserStore && UserStore.currUser.name}</span>
-              <span>Balance: {UserStore && UserStore.currUser.coins}
+              <span>Welcome: {!!UserStore.currUser && UserStore.currUser.name}</span>
+              <span>Balance: {!!UserStore.currUser && UserStore.currUser.coins}
                 <i className="flaticon-dollar-sign-and-piles-of-coins">
                 </i>
               </span>

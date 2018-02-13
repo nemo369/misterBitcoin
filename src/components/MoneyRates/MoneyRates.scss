@@ -1,0 +1,83 @@
+$rotateAmount:300deg;
+
+.money-rate{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+        .money-container{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            transform-origin: 50% 110%;    
+            transition: all .3s ease-in-out;
+            animation: rotate 2s 1 ease-out;
+            // animation-fill-mode: forwards;
+        }
+        
+        .button{
+            position: absolute;
+            width: 88%;
+            // border: 15px solid transparent;
+            overflow: hidden;
+            transform-origin: 50% 580%;    
+            text-align: center;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            &:hover{
+                cursor: pointer;
+                opacity: .9;
+            }
+        }
+        
+        .dolar{
+            transform: rotate(60deg) ;
+            background: #61C9A8;
+        }
+        
+        .bitcoin{
+            transform: rotate(120deg) ;
+            background: #A53860;
+        }
+        
+        .shekel{
+            transform: rotate(180deg) ;
+            background: #4C3B4D    
+            
+        }
+        
+        .euro{
+            transform: rotate(240deg) ;
+            background: #FFEEDB;
+        }
+        
+        .pound{
+            transform: rotate(300deg) ;
+            background: #ADA8B6; 
+        }
+        
+        .ethereum{
+            transform: rotate(360deg)  ;
+            background: #1985A1; 
+        }
+        
+        .clicked{
+            outline: 2px solid hotpink;
+        }
+        .rate{
+            position: absolute;
+            top:50%;
+            overflow: hidden;
+            z-index: -1;
+            width: 150px;
+            text-align: center;
+            color: #4C3B4D;
+        }
+        
+}
+
+@keyframes rotate {
+    0%   {transform: rotate(0deg)}
+    80%   {transform: rotate(($rotateAmount+20))}
+    100% {transform: rotate($rotateAmount)}
+}

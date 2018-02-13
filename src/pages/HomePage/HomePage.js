@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserService from '../../services/UserService'
 import BitcoinService from '../../services/BitcoinService';
+import MoneyRates from '../../components/MoneyRates/MoneyRates'
 import './HomePage.css'
 import '../../assets/icon-font/flaticon.css'
 import { inject, observer } from 'mobx-react'
@@ -10,35 +11,33 @@ import { inject, observer } from 'mobx-react'
 class HomePage extends Component {
 
   state = {
-    currRate: ''
+    bitcoin: ''
   }
 
 
   componentWillMount() {
-    if (!this.state.user){this.props.history.push('/signup')}
+    console.log(this.props.UserStore.currUser.name,'gg')
+    if (!this.props.UserStore.currUser){this.props.history.push('/signup')}
     else {
 
-    var coins = this.state.user.coins || '0'
+    var coins = this.props.UserStore.currUser.coins || '0'
     BitcoinService.getRate(coins)
-      .then(rate => {
-        this.setState({ currRate: rate })
+      .then(bitcoin => {
+        this.setState({ bitcoin })
       })
     }
   }
 
   render() {
-    const { currRate } = this.state
+    const { bitcoin } = this.state
     const { UserStore } = this.props
     return (
       <div className="home-page-list">
-        {<h2>Welcome To Mister-Bitcoin {UserStore.currUser.name}</h2>}
-        <ul>
-          <li>   {<span className="homepage-title">coins:{UserStore.currUser.coins}
-            <i className="flaticon-different-currencie"></i></span>}</li>
-          <li>  {<span className="homepage-title">Your Bitcoin Rate Is:{currRate}  Ƀ</span>}</li>
-        </ul>
+        {<h2>Welcome {UserStore.currUser.name}</h2>}
+        <MoneyRates rate={{dolar:UserStore.currUser.coins, bitcoin}}/>
+
         <Link to={'/signup'}>
-          <button>Sign Up</button>
+          <button className="bottom-btn">Sign Up</button>
         </Link>
       </div>
     );

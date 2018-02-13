@@ -10,6 +10,7 @@ class UserStore {
     setUser = (user) => {
         UserService.saveUser(user)
         this.currUser = user
+        return Promise.resolve()
     }
     
     addMove = (amount, to) => {

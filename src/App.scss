@@ -1,7 +1,8 @@
 .app {
     max-width: 300px;
     padding: 20px;
-    border: 1px solid black;
+    color: #4C3B4D;
+    border: 1px solid #4C3B4D;
     border-radius: 5px;
     margin: 30px auto;
 
@@ -11,7 +12,7 @@
         padding: 8px 20px;
         border-bottom: 1px solid;
     }
-
+    
     .app-content {
         padding: 20px 0 0 0;
         height: 400px;
@@ -25,4 +26,20 @@
     [class*=" flaticon-"]:after {
         margin: 0;
     }
+       
+    }
+    .app-footer{
+        background: #A53860;
+        padding: 6.5px;
+        margin: -6.5px;
+        color: #4C3B4D;
+        transition: .2s;
+        &:hover{
+            color: black;
+        }
+}
+.welcome-header{
+    display: flex;
+    justify-content: space-around;
+    color: #A53860
 }
