@@ -4,7 +4,7 @@ import UserService from '../services/UserService'
 
 class UserStore {
 
-    @observable currUser = null
+    @observable currUser = null;
 
     @action
     setUser = (user) => {

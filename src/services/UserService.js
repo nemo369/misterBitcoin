@@ -4,6 +4,7 @@ const STORAGE_KEY = 'user';
 
 function loadUser (){
     var user = StorageService.load(STORAGE_KEY)
+    if (user === null) user = getEmptyUser()
     return user
 }
 
@@ -13,7 +14,7 @@ function saveUser(user) {
 
 function getEmptyUser() {
     return {
-        name:'',
+        name:'User',
         coins:100,
         moves:[],
         _id:uniqid() 

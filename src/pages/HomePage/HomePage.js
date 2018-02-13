@@ -16,8 +16,7 @@ class HomePage extends Component {
 
 
   componentWillMount() {
-    console.log(this.props.UserStore.currUser.name,'gg')
-    if (!this.props.UserStore.currUser){this.props.history.push('/signup')}
+    if (this.props.UserStore.currUser === null){this.props.history.push('/signup')}
     else {
 
     var coins = this.props.UserStore.currUser.coins || '0'
@@ -31,6 +30,7 @@ class HomePage extends Component {
   render() {
     const { bitcoin } = this.state
     const { UserStore } = this.props
+    if (UserStore.currUser === null){this.props.history.push('/signup')}    
     return (
       <div className="home-page-list">
         {<h2>Welcome {UserStore.currUser.name}</h2>}
